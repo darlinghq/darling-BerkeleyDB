@@ -1,0 +1,336 @@
+project(darling-BerkeleyDB)
+
+include_directories(
+	${CMAKE_CURRENT_SOURCE_DIR}/db
+	${CMAKE_CURRENT_SOURCE_DIR}/db/build_unix
+)
+
+add_darling_static_library(berkeley_db
+	FAT
+	SOURCES
+		db/btree/bt_compact.c
+		db/btree/bt_compare.c
+		db/btree/bt_conv.c
+		db/btree/bt_curadj.c
+		db/btree/bt_cursor.c
+		db/btree/bt_delete.c
+		db/btree/bt_method.c
+		db/btree/bt_open.c
+		db/btree/bt_put.c
+		db/btree/bt_rec.c
+		db/btree/bt_reclaim.c
+		db/btree/bt_recno.c
+		db/btree/bt_rsearch.c
+		db/btree/bt_search.c
+		db/btree/bt_split.c
+		db/btree/bt_stat.c
+		db/btree/bt_upgrade.c
+		db/btree/bt_verify.c
+		db/btree/btree_auto.c
+		db/clib/snprintf.c
+		db/common/db_byteorder.c
+		db/common/db_err.c
+		db/common/db_getlong.c
+		db/common/db_idspace.c
+		db/common/db_log2.c
+		db/common/db_shash.c
+		db/common/dbt.c
+		db/common/mkpath.c
+		db/common/openflags.c
+		db/common/os_method.c
+		db/common/zerofill.c
+		db/crypto/aes_method.c
+		db/crypto/crypto.c
+		db/crypto/mersenne/mt19937db.c
+		db/crypto/rijndael/rijndael-alg-fst.c
+		db/crypto/rijndael/rijndael-api-fst.c
+		db/db/crdel_auto.c
+		db/db/crdel_rec.c
+		db/db/db_am.c
+		db/db/db_auto.c
+		db/db/db_cam.c
+		db/db/db_cds.c
+		db/db/db_conv.c
+		db/db/db_dispatch.c
+		db/db/db_dup.c
+		db/db/db_iface.c
+		db/db/db_join.c
+		db/db/db_meta.c
+		db/db/db_method.c
+		db/db/db_open.c
+		db/db/db_overflow.c
+		db/db/db_ovfl_vrfy.c
+		db/db/db_pr.c
+		db/db/db_rec.c
+		db/db/db_reclaim.c
+		db/db/db_remove.c
+		db/db/db_rename.c
+		db/db/db_ret.c
+		db/db/db_setid.c
+		db/db/db_setlsn.c
+		db/db/db_stati.c
+		db/db/db_truncate.c
+		db/db/db_upg_opd.c
+		db/db/db_upg.c
+		db/db/db_vrfy.c
+		db/db/db_vrfyutil.c
+		db/db/db.c
+		db/dbm/dbm.c
+		db/dbreg/dbreg_auto.c
+		db/dbreg/dbreg_rec.c
+		db/dbreg/dbreg_stat.c
+		db/dbreg/dbreg_util.c
+		db/dbreg/dbreg.c
+		db/env/env_alloc.c
+		db/env/env_config.c
+		db/env/env_failchk.c
+		db/env/env_file.c
+		db/env/env_globals.c
+		db/env/env_method.c
+		db/env/env_name.c
+		db/env/env_open.c
+		db/env/env_recover.c
+		db/env/env_region.c
+		db/env/env_register.c
+		db/env/env_sig.c
+		db/env/env_stat.c
+		db/fileops/fileops_auto.c
+		db/fileops/fop_basic.c
+		db/fileops/fop_rec.c
+		db/fileops/fop_util.c
+		db/hash/hash_auto.c
+		db/hash/hash_conv.c
+		db/hash/hash_dup.c
+		db/hash/hash_func.c
+		db/hash/hash_meta.c
+		db/hash/hash_method.c
+		db/hash/hash_open.c
+		db/hash/hash_page.c
+		db/hash/hash_rec.c
+		db/hash/hash_reclaim.c
+		db/hash/hash_stat.c
+		db/hash/hash_upgrade.c
+		db/hash/hash_verify.c
+		db/hash/hash.c
+		db/hmac/hmac.c
+		db/hmac/sha1.c
+		db/hsearch/hsearch.c
+		db/lock/lock_deadlock.c
+		db/lock/lock_failchk.c
+		db/lock/lock_id.c
+		db/lock/lock_list.c
+		db/lock/lock_method.c
+		db/lock/lock_region.c
+		db/lock/lock_stat.c
+		db/lock/lock_timer.c
+		db/lock/lock_util.c
+		db/lock/lock.c
+		db/log/log_archive.c
+		db/log/log_compare.c
+		db/log/log_debug.c
+		db/log/log_get.c
+		db/log/log_method.c
+		db/log/log_put.c
+		db/log/log_stat.c
+		db/log/log.c
+		db/mp/mp_alloc.c
+		db/mp/mp_bh.c
+		db/mp/mp_fget.c
+		db/mp/mp_fmethod.c
+		db/mp/mp_fopen.c
+		db/mp/mp_fput.c
+		db/mp/mp_fset.c
+		db/mp/mp_method.c
+		db/mp/mp_mvcc.c
+		db/mp/mp_region.c
+		db/mp/mp_register.c
+		db/mp/mp_resize.c
+		db/mp/mp_stat.c
+		db/mp/mp_sync.c
+		db/mp/mp_trickle.c
+		db/mutex/mut_alloc.c
+		db/mutex/mut_failchk.c
+		db/mutex/mut_method.c
+		db/mutex/mut_pthread.c
+		db/mutex/mut_region.c
+		db/mutex/mut_stat.c
+		db/mutex/mut_tas.c
+		db/os/os_abort.c
+		db/os/os_abs.c
+		db/os/os_addrinfo.c
+		db/os/os_alloc.c
+		db/os/os_clock.c
+		db/os/os_config.c
+		db/os/os_cpu.c
+		db/os/os_ctime.c
+		db/os/os_dir.c
+		db/os/os_errno.c
+		db/os/os_fid.c
+		db/os/os_flock.c
+		db/os/os_fsync.c
+		db/os/os_getenv.c
+		db/os/os_handle.c
+		db/os/os_map.c
+		db/os/os_mkdir.c
+		db/os/os_open.c
+		db/os/os_pid.c
+		db/os/os_rename.c
+		db/os/os_root.c
+		db/os/os_rpath.c
+		db/os/os_rw.c
+		db/os/os_seek.c
+		db/os/os_stack.c
+		db/os/os_stat.c
+		db/os/os_tmpdir.c
+		db/os/os_truncate.c
+		db/os/os_uid.c
+		db/os/os_unlink.c
+		db/os/os_yield.c
+		db/qam/qam_auto.c
+		db/qam/qam_conv.c
+		db/qam/qam_files.c
+		db/qam/qam_method.c
+		db/qam/qam_open.c
+		db/qam/qam_rec.c
+		db/qam/qam_stat.c
+		db/qam/qam_upgrade.c
+		db/qam/qam_verify.c
+		db/qam/qam.c
+		db/rep/rep_auto.c
+		db/rep/rep_backup.c
+		db/rep/rep_elect.c
+		db/rep/rep_lease.c
+		db/rep/rep_log.c
+		db/rep/rep_method.c
+		db/rep/rep_record.c
+		db/rep/rep_region.c
+		db/rep/rep_stat.c
+		db/rep/rep_util.c
+		db/rep/rep_verify.c
+		db/repmgr/repmgr_auto.c
+		db/repmgr/repmgr_elect.c
+		db/repmgr/repmgr_method.c
+		db/repmgr/repmgr_msg.c
+		db/repmgr/repmgr_net.c
+		db/repmgr/repmgr_posix.c
+		db/repmgr/repmgr_queue.c
+		db/repmgr/repmgr_sel.c
+		db/repmgr/repmgr_stat.c
+		db/repmgr/repmgr_util.c
+		db/sequence/seq_stat.c
+		db/sequence/sequence.c
+		db/txn/txn_auto.c
+		db/txn/txn_chkpt.c
+		db/txn/txn_failchk.c
+		db/txn/txn_method.c
+		db/txn/txn_rec.c
+		db/txn/txn_recover.c
+		db/txn/txn_region.c
+		db/txn/txn_stat.c
+		db/txn/txn_util.c
+		db/txn/txn.c
+		db/xa/xa_db.c
+		db/xa/xa_map.c
+		db/xa/xa.c
+)
+
+add_darling_static_library(berkeley_db_util
+	FAT
+	SOURCES
+		db/common/util_cache.c
+		db/common/util_log.c
+		db/common/util_sig.c
+)
+
+#
+# executables
+#
+
+function(add_db_executable name)
+	add_darling_executable(db_${name} ${ARGN})
+	target_link_libraries(db_${name}
+		berkeley_db
+		berkeley_db_util
+	)
+	install(TARGETS db_${name} DESTINATION libexec/darling/usr/bin)
+endfunction()
+
+add_db_executable(archive
+	db/db_archive/db_archive.c
+)
+
+add_db_executable(checkpoint
+	db/db_checkpoint/db_checkpoint.c
+)
+
+add_db_executable(codegen
+	db/db_codegen/db_codegen.c
+	db/db_codegen/code_capi.c
+	db/db_codegen/code_parse.c
+)
+
+add_db_executable(deadlock
+	db/db_deadlock/db_deadlock.c
+)
+
+add_db_executable(dump
+	db/db_dump/db_dump.c
+)
+
+add_db_executable(hotbackup
+	db/db_hotbackup/db_hotbackup.c
+)
+
+add_db_executable(load
+	db/db_load/db_load.c
+)
+
+add_db_executable(printlog
+	db/db_printlog/db_printlog.c
+	db/btree/btree_autop.c
+	db/db/crdel_autop.c
+	db/db/db_autop.c
+	db/dbreg/dbreg_autop.c
+	db/fileops/fileops_autop.c
+	db/hash/hash_autop.c
+	db/qam/qam_autop.c
+	db/txn/txn_autop.c
+)
+
+add_db_executable(recover
+	db/db_recover/db_recover.c
+)
+
+add_db_executable(stat
+	db/db_stat/db_stat.c
+)
+
+add_db_executable(upgrade
+	db/db_upgrade/db_upgrade.c
+)
+
+add_db_executable(verify
+	db/db_verify/db_verify.c
+)
+
+#
+# man pages
+#
+
+set(man1_sources
+	AppleExtras/db_printlog.1
+	AppleExtras/db_archive.1
+	AppleExtras/db_recover.1
+	AppleExtras/db_dump.1
+	AppleExtras/db_verify.1
+	AppleExtras/db_deadlock.1
+	AppleExtras/db_upgrade.1
+	AppleExtras/db_stat.1
+	AppleExtras/db_checkpoint.1
+	AppleExtras/db_load.1
+)
+
+install(
+	FILES ${man1_sources}
+	DESTINATION libexec/darling/usr/share/man1
+)
