@@ -332,5 +332,5 @@ set(man1_sources
 
 install(
 	FILES ${man1_sources}
-	DESTINATION libexec/darling/usr/share/man1
+	DESTINATION libexec/darling/usr/share/man/man1
 )
