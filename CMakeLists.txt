@@ -150,6 +150,7 @@ add_darling_static_library(berkeley_db
 		db/mp/mp_trickle.c
 		db/mutex/mut_alloc.c
 		db/mutex/mut_failchk.c
+		db/mutex/mut_fcntl.c
 		db/mutex/mut_method.c
 		db/mutex/mut_pthread.c
 		db/mutex/mut_region.c
